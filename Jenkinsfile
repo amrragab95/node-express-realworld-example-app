@@ -6,11 +6,11 @@ pipeline {
         sh 'npm install'
        }
       }
-           stage('lint') {
-       steps {
-        sh 'ng lint '
-       }
-      }
+//           stage('lint') {
+//       steps {
+//        sh 'ng lint '
+//       }
+//      }
       
 //    stage('Test') {
        
