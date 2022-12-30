@@ -4,7 +4,6 @@ pipeline {
           stage('Dependencies') {
        steps {
         sh 'npm install'
-        sh 'yum install -y mongodb-org'
         sh 'npm run dev'
        }
       }
