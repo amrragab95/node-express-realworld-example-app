@@ -4,6 +4,7 @@ pipeline {
           stage('Dependencies') {
        steps {
         sh 'npm install'
+        sh 'npm run dev'
        }
       }
 //           stage('lint') {
