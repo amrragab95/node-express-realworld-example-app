@@ -4,7 +4,6 @@ pipeline {
           stage('Dependencies') {
        steps {
         sh 'npm install'
-        sh 'npm run dev'
        }
       }
 //           stage('lint') {
@@ -26,11 +25,11 @@ pipeline {
 //      }
 //    }
 //
-           stage('e2e') {
-            steps {
-                sh 'ng e2e'
-            }
-        }  
+//           stage('e2e') {
+//            steps {
+//              //  sh 'ng e2e'
+//            }
+//        }  
         stage('Build') {
             steps {
                 sh 'ng build --prod --progress=false' 
@@ -38,23 +37,23 @@ pipeline {
          
     }
         
-      stage('Publish'){
-        steps {
-          sh ' npm publish --registry https://amrjfrogserver.jfrog.io/artifactory/api/npm/npm-local/ '
-        }     
-  }
+//      stage('Publish'){
+ //       steps {
+//          sh ' npm publish --registry https://amrjfrogserver.jfrog.io/artifactory/api/npm/npm-local/ '
+//        }     
+//  }
 
-      stage("Push") {
+    stage("Push") {
        environment {
-        imageName = 'siemens-project'
-        dockerName = 'amrragab'
+        imageName = 'swvl-project'
+        dockerName = 'swvl'
       }
             steps {
                        script {
                withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/') {
-               def astonvillaimage = docker.build dockerName + "/" + imageName + ":" + "${env.BUILD_NUMBER}"           
-               astonvillaimage.push('latest')
-               astonvillaimage.push( "release-" + "${env.BUILD_NUMBER}" )
+               def swvlimage = docker.build dockerName + "/" + imageName + ":" + "${env.BUILD_NUMBER}"           
+               swvl.push('latest')
+             swvl.push( "release-" + "${env.BUILD_NUMBER}" )
                 
                      }
                     }
