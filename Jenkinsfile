@@ -30,12 +30,12 @@ pipeline {
 //              //  sh 'ng e2e'
 //            }
 //        }  
-        stage('Build') {
-            steps {
-                sh 'ng build --prod --progress=false' 
-            }
-         
-    }
+//        stage('Build') {
+//            steps {
+//                sh 'ng build --prod --progress=false' 
+//            }
+//         
+//    }
         
 //      stage('Publish'){
  //       steps {
