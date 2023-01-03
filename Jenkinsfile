@@ -52,8 +52,8 @@ pipeline {
                        script {
                withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/') {
                def swvlimage = docker.build dockerName + "/" + imageName + ":" + "${env.BUILD_NUMBER}"           
-               swvl.push('latest')
-             swvl.push( "release-" + "${env.BUILD_NUMBER}" )
+               swvlimage.push('latest')
+             swvlimage.push( "release-" + "${env.BUILD_NUMBER}" )
                 
                      }
                     }
