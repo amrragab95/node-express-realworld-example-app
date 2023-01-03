@@ -46,7 +46,7 @@ pipeline {
     stage("Push") {
        environment {
         imageName = 'swvl-project'
-        dockerName = 'swvl'
+        dockerName = 'amrragab'
       }
             steps {
                        script {
