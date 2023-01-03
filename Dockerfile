@@ -1,12 +1,7 @@
-### STAGE 1: Build ###
-FROM node:12.7-alpine AS build
+FROM node:16-alpine
 WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-RUN npm run dev
-
-### STAGE 2: Run ###
-FROM nginx:1.17.1-alpine
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /usr/src/app/dist/node-express-realworld-example-app /usr/share/nginx/html
+EXPOSE 3000
+CMD [ "node", "app.js" ]
